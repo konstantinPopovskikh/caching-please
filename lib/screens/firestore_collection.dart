@@ -31,27 +31,6 @@ class _FirestoreCollectionCachingState
   }
 }
 
-// class FirestoreCollectionCaching extends StatelessWidget {
-//   const FirestoreCollectionCaching({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Firestore Collection'),
-//       ),
-//       body: Column(
-//         children: [
-//           const Expanded(
-//             child: DocList(),
-//           ),
-//           inputfield(),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 class DocList extends StatefulWidget {
   const DocList({Key? key}) : super(key: key);
 
@@ -61,10 +40,15 @@ class DocList extends StatefulWidget {
 
 class _DocListState extends State<DocList> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Center(
       child: FutureBuilder(
-        future: Provider.of<FirestoreChanges>(context).future,
+        future: getFromFirestore(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Center(child: CircularProgressIndicator());

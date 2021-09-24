@@ -50,8 +50,8 @@ class _MyAppState extends State<MyApp> {
       firstScreen = const LoginPage();
     }
 
-    Provider.of<FirestoreChanges>(context, listen: false)
-        .listenOnFirestoreChanges();
+    // Provider.of<FirestoreChanges>(context, listen: false)
+    //     .listenOnFirestoreChanges();
 
     return MaterialApp(
       theme: ThemeData(
